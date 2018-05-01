@@ -1,0 +1,44 @@
+import java.io.* ;
+import javax.swing.* ;
+import java.awt.* ;
+
+class Layout extends JFrame
+{
+	JPanel pnl = new JPanel() ;
+	Container contentPane = getContentPane() ;
+	JPanel grid = new JPanel( new GridLayout( 2 , 2 ) ) ;
+
+	public Layout()
+	{
+		super( "Окно Swing" ) ;
+		setSize( 500 , 200 ) ;
+		setDefaultCloseOperation( EXIT_ON_CLOSE ) ;
+		add( pnl ) ;
+		pnl.add( new JButton( "Да" ) ) ;
+		pnl.add( new JButton( "Нет" ) ) ;
+		pnl.add( new JButton( "Отмена" ) ) ;
+		grid.add( new JButton( "1" ) ) ;
+		grid.add( new JButton( "2" ) ) ;
+		grid.add( new JButton( "3" ) ) ;
+		grid.add( new JButton( "4" ) ) ;
+		contentPane.add( "North" , pnl ) ;
+		contentPane.add( "Center" , grid ) ;
+		contentPane.add( "West" , new JButton( "Запад" ) ) ;
+		setVisible( true ) ;
+	}
+
+	public static void main ( String[] args )
+	{
+		String consoleEncoding = System.getProperty( "consoleEncoding" ) ;
+		if ( consoleEncoding != null )
+			try
+			{
+				System.setOut( new PrintStream ( System.out, true , consoleEncoding ) ) ;
+			}
+			catch( UnsupportedEncodingException ex )
+			{
+				System.err.println( "Unsupported encoding set for console: " + consoleEncoding ) ;
+			}
+		Layout gui = new Layout() ;
+	}
+}
